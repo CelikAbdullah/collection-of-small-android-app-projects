@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Normally, I would not use such an XML file in production apps but
+since this app connects to my own Django REST API project and the
+development server of Django operates in HTTP mode, we have to include
+this. Basically, what we are telling to Android with this file is that
+it is okay to connect via HTTP.
+For learning purposes, this might be okay, but for real-world apps you
+should always use HTTPS.
+-->
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <base-config cleartextTrafficPermitted="true">
+    </base-config>
+</network-security-config>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation_graph"
+    app:startDestination="@id/itemsFragment">
+
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="celik.abdullah.pagingwithnetworkanddatabase.fragment.ItemsFragment"
+        android:label="Items"
+        tools:layout="@layout/fragment_items">
+        <action
+            android:id="@+id/action_itemsFragment_to_searchItemsFragment"
+            app:destination="@id/searchItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchItemsFragment"
+        android:name="celik.abdullah.pagingwithnetworkanddatabase.fragment.SearchItemsFragment"
+        android:label="Searched Items"
+        tools:layout="@layout/fragment_search_items">
+        <action
+            android:id="@+id/action_searchItemsFragment_self"
+            app:destination="@id/searchItemsFragment" />
+        <argument
+            android:name="query"
+            app:argType="string" />
+    </fragment>
+</navigation>
