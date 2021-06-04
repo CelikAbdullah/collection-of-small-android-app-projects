@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="celik.abdullah.authentication.fragment.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_logingFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_logingFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_logingFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="celik.abdullah.authentication.fragment.RegistrationFragment"
+        android:label="Registration"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/registrationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="celik.abdullah.authentication.fragment.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="celik.abdullah.authentication.fragment.ChangePasswordFragment"
+        tools:layout="@layout/fragment_change_password"
+        android:label="Change Password" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="celik.abdullah.authentication.fragment.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+</navigation>

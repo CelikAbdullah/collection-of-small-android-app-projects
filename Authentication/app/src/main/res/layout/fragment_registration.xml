@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="celik.abdullah.authentication.viewmodel.RegistrationFragmentViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:nextFocusDown="@id/register_username"
+                android:imeOptions="actionDone"
+                app:endIconMode="clear_text"
+                app:boxStrokeColor="@color/purple_700"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeWidth="3dp"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:hint="@string/email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:nextFocusDown="@id/register_password"
+                android:imeOptions="actionDone"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700"
+                app:endIconMode="clear_text"
+                app:boxStrokeColor="@color/purple_700"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeWidth="3dp"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/register_email"
+                android:hint="@string/username"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:nextFocusDown="@id/register"
+                android:imeOptions="actionDone"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/purple_700"
+                app:endIconMode="password_toggle"
+                app:boxStrokeColor="@color/purple_700"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeWidth="3dp"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/register_username"
+                android:hint="Password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.startRegistration()}"
+                android:text="@string/register"
+                android:textColor="@color/silver"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:clickable="false"
+                style="?attr/materialButtonOutlinedStyle"
+                app:strokeWidth="3dp"
+                app:backgroundTint="@color/white"
+                app:strokeColor="@color/purple_700"
+                app:layout_constraintTop_toBottomOf="@id/register_password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+</layout>

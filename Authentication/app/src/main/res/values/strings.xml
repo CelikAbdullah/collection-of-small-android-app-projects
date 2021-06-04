@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Authentication</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="logout">Logout</string>
+    <string name="here_we_could_show_the_user_s_data_name_profile_picture_etc_we_stored_locally">Here we could show the users data (name, profile picture etc.) we stored locally</string>
+    <string name="network_error_message">A network problem has been occurred. Please check your internet connection.</string>
+    <string name="logout_successful_message">You are successfully logged out.</string>
+    <string name="logout_error_message">An error has been occurred during the logout. Please try it againg.</string>
+    <string name="network_error_dialog">Network Issues</string>
+    <string name="logout_dialog_title">Logout</string>
+    <string name="new_password">New Password</string>
+    <string name="send">Send</string>
+    <string name="this_might_be_the_starting_page_of_your_app_to_login_or_register_the_user_might_go_to_settings_in_the_top_right_corner_of_the_current_display">This might be the starting page of your app. To login or register the user might go to Settings in the top right corner of the current display.</string>
+</resources>
