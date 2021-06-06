@@ -15,7 +15,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import celik.abdullah.authentication.R
 import celik.abdullah.authentication.databinding.FragmentRegistrationBinding
+import celik.abdullah.authentication.utils.Const
 import celik.abdullah.authentication.utils.Const.showErrorDialog
+import celik.abdullah.authentication.utils.Const.showInvalidDataDialog
 import celik.abdullah.authentication.utils.Const.showNetworkIssuesDialog
 import celik.abdullah.authentication.utils.EventObserver
 import celik.abdullah.authentication.viewmodel.RegistrationFragmentViewModel
@@ -176,6 +178,12 @@ class RegistrationFragment : Fragment() {
                 registerResult.networkError?.let { networkErrorMessage ->
                     binding.loading.visibility = View.GONE
                     showNetworkIssuesDialog(requireContext(), networkErrorMessage).show()
+                }
+
+                // scenario IV: something bad happened
+                registerResult.invalidData?.let{ invalidDataMessage ->
+                    binding.loading.visibility = View.GONE
+                    showInvalidDataDialog(requireContext(), invalidDataMessage).show()
                 }
             })
         }

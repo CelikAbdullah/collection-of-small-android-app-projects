@@ -43,6 +43,8 @@ class LoginFragmentViewModel @Inject constructor(private val authRepository: Aut
                 is NetworkResult.Error -> _loginResult.value = AuthenticationResult(error = result.error?.errorMessage)
                 // network error; just telling the user that he/she has no internet
                 is NetworkResult.NetworkError -> _loginResult.value = AuthenticationResult(networkError = R.string.network_error_message)
+                // some unknown issue is happened
+                is NetworkResult.InvalidData -> _loginResult.value = AuthenticationResult(invalidData = R.string.invalid_data)
             }
         }
 
@@ -65,6 +67,8 @@ class LoginFragmentViewModel @Inject constructor(private val authRepository: Aut
                 is NetworkResult.Error -> _logoutResult.value = LogoutResult(error = result.error?.errorMessage)
                 // the user might have internet issues
                 is NetworkResult.NetworkError -> _logoutResult.value = LogoutResult(networkError=R.string.network_error_message)
+                // some unknown issue is happened
+                is NetworkResult.InvalidData -> _logoutResult.value = LogoutResult(invalidData = R.string.invalid_data)
             }
         }
     }

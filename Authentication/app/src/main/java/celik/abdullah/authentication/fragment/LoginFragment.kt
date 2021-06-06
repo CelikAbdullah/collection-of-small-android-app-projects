@@ -20,6 +20,7 @@ import celik.abdullah.authentication.R
 import celik.abdullah.authentication.databinding.FragmentLoginBinding
 import celik.abdullah.authentication.utils.Const.logoutDialog
 import celik.abdullah.authentication.utils.Const.showErrorDialog
+import celik.abdullah.authentication.utils.Const.showInvalidDataDialog
 import celik.abdullah.authentication.utils.Const.showNetworkIssuesDialog
 import celik.abdullah.authentication.utils.EventObserver
 import celik.abdullah.authentication.viewmodel.LoginFragmentViewModel
@@ -154,6 +155,12 @@ class LoginFragment : Fragment() {
                     binding.loading.visibility = View.GONE
                     showNetworkIssuesDialog(requireContext(), networkErrorMessage).show()
                 }
+
+                // scenario IV: something bad happened
+                loginResult.invalidData?.let{ invalidDataMessage ->
+                    binding.loading.visibility = View.GONE
+                    showInvalidDataDialog(requireContext(), invalidDataMessage).show()
+                }
             })
 
             // handles the possible results of our logout request
@@ -182,6 +189,12 @@ class LoginFragment : Fragment() {
                     binding.loading.visibility = View.GONE
                     // show error via dialog
                     showNetworkIssuesDialog(requireContext(), networkErrorMessage).show()
+                }
+
+                // scenario IV: something bad happened
+                logoutResult.invalidData?.let{ invalidDataMessage ->
+                    binding.loading.visibility = View.GONE
+                    showInvalidDataDialog(requireContext(), invalidDataMessage).show()
                 }
             })
         }

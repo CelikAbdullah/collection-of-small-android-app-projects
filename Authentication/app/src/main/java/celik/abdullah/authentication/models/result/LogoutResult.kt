@@ -11,5 +11,6 @@ package celik.abdullah.authentication.models.result
 data class LogoutResult(
     val success: Int? = null,
     val error: String? = null,
-    val networkError: Int? = null
+    val networkError: Int? = null,
+    val invalidData : Int? = null
 )

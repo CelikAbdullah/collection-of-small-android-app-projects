@@ -21,9 +21,11 @@
     <string name="logout">Logout</string>
     <string name="here_we_could_show_the_user_s_data_name_profile_picture_etc_we_stored_locally">Here we could show the users data (name, profile picture etc.) we stored locally</string>
     <string name="network_error_message">A network problem has been occurred. Please check your internet connection.</string>
+    <string name="invalid_data">An unknown error has been occurred. Sorry.</string>
     <string name="logout_successful_message">You are successfully logged out.</string>
     <string name="logout_error_message">An error has been occurred during the logout. Please try it againg.</string>
     <string name="network_error_dialog">Network Issues</string>
+    <string name="unknown_error_dialog">Unknown Issue</string>
     <string name="logout_dialog_title">Logout</string>
     <string name="new_password">New Password</string>
     <string name="send">Send</string>

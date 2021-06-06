@@ -17,21 +17,21 @@ interface AuthApi {
     @FormUrlEncoded
     suspend fun register(@Field("username") username: String,
                          @Field("email") email: String,
-                         @Field("password") password: String) : AuthenticationResponse
+                         @Field("password") password: String) : Response<AuthenticationResponse>
 
     // used to execute the login request
     @POST("api/auth/login")
     @FormUrlEncoded
     suspend fun login(
         @Field("username") username: String,
-        @Field("password") password: String): AuthenticationResponse
+        @Field("password") password: String): Response<AuthenticationResponse>
 
     // used to execute the password changing request
     @POST("changePassword")
     @FormUrlEncoded
     suspend fun changePassword(
         @Field("email") email: String,
-        @Field("newPassword") newPassword: String) : NetworkChangePasswordResponse
+        @Field("newPassword") newPassword: String) : Response<NetworkChangePasswordResponse>
 
     // used to execute the logout request
     @POST("logout")

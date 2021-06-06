@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import celik.abdullah.authentication.R
 
 object Const {
-    const val BASE_URL = "<Place-your-URL-here>"
+    const val BASE_URL = "http://192.168.2.104:8000/"
     const val USER_TOKEN = "celik.abdullah.authentication.USER_TOKEN"
     const val USER_PASSWORD = "celik.abdullah.authentication.USER_PASSWORD"
     const val USER_EMAIL = "celik.abdullah.authentication.USER_EMAIL"
@@ -30,6 +30,13 @@ object Const {
     fun showNetworkIssuesDialog(context: Context, networkErrorString: Int): AlertDialog {
         val builder: AlertDialog.Builder = context.let { AlertDialog.Builder(it) }
         builder.setMessage(networkErrorString)?.setTitle(R.string.network_error_dialog)
+
+        return builder.create()
+    }
+
+    fun showInvalidDataDialog(context: Context, invalidDataMessage:Int): AlertDialog {
+        val builder: AlertDialog.Builder = context.let { AlertDialog.Builder(it) }
+        builder.setMessage(invalidDataMessage)?.setTitle(R.string.unknown_error_dialog)
 
         return builder.create()
     }

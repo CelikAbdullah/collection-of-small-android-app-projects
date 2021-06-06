@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import celik.abdullah.authentication.R
 import celik.abdullah.authentication.models.form.RegistrationFormState
 import celik.abdullah.authentication.models.result.AuthenticationResult
+import celik.abdullah.authentication.models.result.LogoutResult
 import celik.abdullah.authentication.network.NetworkResult
 import celik.abdullah.authentication.network.NetworkUserReponse
 import celik.abdullah.authentication.repository.AuthRepository
@@ -43,6 +44,8 @@ class RegistrationFragmentViewModel @Inject constructor(private val authReposito
                 is NetworkResult.Error -> _registrationResult.value = AuthenticationResult(error = result.error?.errorMessage)
                 // network error; just telling the user that he/she has no internet
                 is NetworkResult.NetworkError -> _registrationResult.value = AuthenticationResult(networkError = R.string.network_error_message)
+                // some unknown issue is happened
+                is NetworkResult.InvalidData -> _registrationResult.value = AuthenticationResult(invalidData = R.string.invalid_data)
             }
         }
 

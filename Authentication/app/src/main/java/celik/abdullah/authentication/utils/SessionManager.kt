@@ -48,5 +48,4 @@ class SessionManager @Inject constructor(private val sharedPreferences: SharedPr
     fun retrieveUserTokenFromEncryptSharedPrefs(): String? = sharedPreferences.getString(USER_TOKEN, null)
     fun retrieveUserNameFromEncryptSharedPrefs() : String?  = sharedPreferences.getString(USER_NAME, null)
     fun retrieveUserPasswordFromEncryptSharedPrefs() :  String?  = sharedPreferences.getString(USER_PASSWORD, null)
-    fun retrieveUserEmailFromEncryptSharedPrefs() : String? = sharedPreferences.getString(USER_EMAIL, null)
 }

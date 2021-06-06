@@ -13,5 +13,6 @@ import celik.abdullah.authentication.network.AuthenticationResponse
 data class AuthenticationResult(
     val success: AuthenticationResponse? = null,
     val error: String? = null,
-    val networkError: Int? = null
+    val networkError: Int? = null,
+    val invalidData : Int? = null,
 )
