@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import celik.abdullah.authentication.R
 
 object Const {
-    const val BASE_URL = "http://192.168.2.104:8000/"
+    const val BASE_URL = "<Place-your-URL-here>"
     const val USER_TOKEN = "celik.abdullah.authentication.USER_TOKEN"
     const val USER_PASSWORD = "celik.abdullah.authentication.USER_PASSWORD"
     const val USER_EMAIL = "celik.abdullah.authentication.USER_EMAIL"

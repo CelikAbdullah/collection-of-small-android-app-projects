@@ -1,6 +1,7 @@
 package celik.abdullah.authentication.repository
 
 
+import android.content.SharedPreferences
 import android.net.Network
 import android.util.Log
 import celik.abdullah.authentication.utils.SessionManager
@@ -20,10 +21,10 @@ import javax.inject.Inject
 class AuthRepository @Inject constructor(private val service: AuthApi,
                                          private val database:AuthDatabase,
                                          private val sessionManager: SessionManager
-) {
+): AuthRepositoryInterface {
 
     // used to perform the login request
-    suspend fun login(username:String, password:String): NetworkResult<AuthenticationResponse> =
+    override suspend fun login(username:String, password:String): NetworkResult<AuthenticationResponse> =
         try {
             val loginResponse = service.login(username, password)
             handleResponseOfApiCall(loginResponse)
@@ -34,7 +35,7 @@ class AuthRepository @Inject constructor(private val service: AuthApi,
 
 
     // used to perform the registration request
-    suspend fun register(username: String, email: String, password: String): NetworkResult<AuthenticationResponse> =
+    override suspend fun register(username: String, email: String, password: String): NetworkResult<AuthenticationResponse> =
         try{
             val registrationResponse = service.register(username, email, password)
             handleResponseOfApiCall(registrationResponse)
@@ -44,7 +45,7 @@ class AuthRepository @Inject constructor(private val service: AuthApi,
 
 
     // used to change the password
-    suspend fun changePassword(email:String, newPassword:String): NetworkResult<NetworkChangePasswordResponse> =
+    override suspend fun changePassword(email:String, newPassword:String): NetworkResult<NetworkChangePasswordResponse> =
         try {
             val changePasswordResponse = service.changePassword(email, newPassword)
             handleResponseOfApiCall(changePasswordResponse)
@@ -56,7 +57,7 @@ class AuthRepository @Inject constructor(private val service: AuthApi,
     /*
     * Used to perform our logout request
     * */
-    suspend fun logout(): NetworkResult<Unit>{
+    override suspend fun logout(): NetworkResult<Unit>{
         return try{
             val token = sessionManager.retrieveUserTokenFromEncryptSharedPrefs()
             val logoutResponse = service.logout("Token $token")
@@ -68,11 +69,11 @@ class AuthRepository @Inject constructor(private val service: AuthApi,
 
 
     // used to set the current token to null
-    fun clearToken() = sessionManager.clearToken()
+    override fun clearToken(): SharedPreferences.Editor = sessionManager.clearToken()
 
     // if the login request is a success
     // then store the user data into the database - this type of data could then be shown for example in a ProfileFragment
-    suspend fun saveUserData(user: NetworkUserReponse) =
+    override suspend fun saveUserData(user: NetworkUserReponse) =
         database.userDao().insertUser(User(
             userName = user.userName,
             userEmail = user.userEmail,
@@ -86,7 +87,7 @@ class AuthRepository @Inject constructor(private val service: AuthApi,
     // Here, we also save the token (in an encrypted way) because some REST APIs might require a
     // token authentication (e.g. changing the profile picture of the user);
     // so a quick lookup for the token (via the EncryptedSharedPreferences) might be very handy later
-    fun saveUserCredentialsIntoEncrpytSharedPrefs(email: String, username: String, password: String, token: String)=
+    override fun saveUserCredentialsIntoEncrpytSharedPrefs(email: String, username: String, password: String, token: String)=
         sessionManager.saveUserCredentialsIntoEncryptedSharedPrefs(
             email=email,
             username=username,
@@ -95,12 +96,12 @@ class AuthRepository @Inject constructor(private val service: AuthApi,
         )
 
     // saves the new password of the user
-    fun saveNewPasswordIntoEncryptedSharedPrefs(newPassword:String) = sessionManager.saveNewPasswordIntoSharedPrefs(newPassword)
+    override fun saveNewPasswordIntoEncryptedSharedPrefs(newPassword:String) = sessionManager.saveNewPasswordIntoSharedPrefs(newPassword)
 
 
     // With these functions the fragments can grab the saved credentials very easily
-    fun retrieveUserTokenFromEncryptSharedPrefs() = sessionManager.retrieveUserTokenFromEncryptSharedPrefs()
-    fun retrieveUserNameFromEncryptSharedPrefs() = sessionManager.retrieveUserNameFromEncryptSharedPrefs()
-    fun retrieveUserPasswordFromEncryptSharedPrefs() = sessionManager.retrieveUserPasswordFromEncryptSharedPrefs()
+    override fun retrieveUserTokenFromEncryptSharedPrefs() = sessionManager.retrieveUserTokenFromEncryptSharedPrefs()
+    override fun retrieveUserNameFromEncryptSharedPrefs() = sessionManager.retrieveUserNameFromEncryptSharedPrefs()
+    override fun retrieveUserPasswordFromEncryptSharedPrefs() = sessionManager.retrieveUserPasswordFromEncryptSharedPrefs()
 
 }

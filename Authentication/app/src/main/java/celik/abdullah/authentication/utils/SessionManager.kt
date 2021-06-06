@@ -22,7 +22,7 @@ class SessionManager @Inject constructor(private val sharedPreferences: SharedPr
                                          private val sharedPrefsEditor: SharedPreferences.Editor) {
 
     // sets the token to null
-    fun clearToken() = sharedPrefsEditor.putString(USER_TOKEN, null)
+    fun clearToken(): SharedPreferences.Editor = sharedPrefsEditor.putString(USER_TOKEN, null)
 
     // used to save the new password after it is changed
     fun saveNewPasswordIntoSharedPrefs(newPassword:String) = sharedPrefsEditor.putString(USER_PASSWORD, newPassword).apply()
